@@ -1,0 +1,5 @@
+Instructions for Quick Reference still go here.  Would be great if it was in HTML.  Below the instructions I would like to have the Blockly building blocks.  Instead of showing the AHK script, the 'Command Content' area will now be replaced by Blockly blocks as arranged by the user.  
+
+'Of all the virtues we can learn no trait is more useful, more essential for survival, and more likely to improve the quality of life than the ability to transform adversity into an enjoyable challenge.' 
+
+- Mihaly Csikszentmihalyi
