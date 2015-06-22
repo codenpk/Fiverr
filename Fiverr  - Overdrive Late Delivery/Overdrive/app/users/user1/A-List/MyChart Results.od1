@@ -1,0 +1,9 @@
+;add click on send msg
+;add wait time
+
+send, Results
+sleep, 200
+send, {tab 2}{space}{tab}
+send, .gcmychartbasic{enter}
+sleep, 200
+send, {f2}

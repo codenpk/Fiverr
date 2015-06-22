@@ -1,0 +1,13 @@
+Click, 300, 228
+Sleep, 100
+Send, lab90{enter 2}
+Sleep, 100
+Send, lab689{enter 2}
+Sleep, 100
+Send, lab17{enter 2}
+Sleep, 100
+Send, lab293{enter 2}
+Sleep, 100
+Send, lab13042{enter 2}
+Sleep, 100
+Send, lab2478{enter 2}

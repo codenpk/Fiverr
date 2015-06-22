@@ -1,0 +1,3 @@
+send, 17110{enter 3}
+sleep, 500
+send, {tab 2}

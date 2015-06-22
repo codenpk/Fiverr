@@ -1,0 +1,16 @@
+;good WCE template
+
+Send, ^+n
+Sleep, 3000
+Send, ^o
+Sleep, 1800
+send, ^g
+send, 300936{enter}
+Send, !v
+send, 99392
+Sleep, 100
+Send, ^+n
+Sleep, 1200
+Send, .gcwellchild{ENTER}
+Send, {F2}{BACKSPACE}
+

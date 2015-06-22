@@ -1,0 +1,5 @@
+send, ak 01{enter 2}
+sleep, 500
+send, ak 02{enter 3}
+sleep, 500
+send, {tab 2}

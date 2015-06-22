@@ -1,0 +1,3 @@
+send, physical therapy gc{enter 3}
+Sleep, 700
+send, {tab 11}{end}

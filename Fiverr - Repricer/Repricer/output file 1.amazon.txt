@@ -1,0 +1,1 @@
+sku	price	minimum-seller-allowed-price	maximum-seller-allowed-price	quantity	leadtime-to-ship	fulfillment-channel1001097429		33.98																						notes: do not include in output file												MSKU field from input file		Purchased Price field from input file				

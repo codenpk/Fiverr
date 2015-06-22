@@ -1,0 +1,19 @@
+This is the down-and-dirty guide for new users to get started successfully using Overdrive.  
+
+To type text on the screen:
+Send, Hello World!
+
+To press enter:
+Send, {enter}
+
+To wait 1 second:
+Sleep, 1000
+
+To open a dot-phrase in a blank note:
+Send, ^+n
+Sleep, 1000
+Send, .mydotphrase{enter}
+
+! = alt
+^ = control
++ = shift

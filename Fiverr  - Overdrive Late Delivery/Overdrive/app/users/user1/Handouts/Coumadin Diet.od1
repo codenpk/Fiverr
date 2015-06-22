@@ -1,0 +1,6 @@
+run wordpad.exe handouts\coumadin_diet.rtf
+
+sleep, 500
+send, ^p
+sleep, 1000
+send, {enter}

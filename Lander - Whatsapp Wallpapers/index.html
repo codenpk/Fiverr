@@ -1,0 +1,64 @@
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>WhatsApp - Neuvos Wallpapers</title>
+	<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link href="icon.png" rel="apple-touch-icon-precomposed" />
+	<link href="css/style.css" rel="stylesheet" />
+	<script src="js/jquery.js"></script>
+	<script src="js/cycle.js"></script>
+</head>
+<body>
+	<div class="main">
+		<a href="http://track.mobilecontent4you.com/click">
+			<div class="uk-grid uk-margin-top">
+				<div class="uk-width-1-1">
+					<center>
+						<div class="logo_wrapper">
+							<img src="icon.png" width="100" />
+						</div>
+						<h1>WhatsApp<br>Neuvos Wallpapers</h1>
+					</center>
+				</div>
+			</div>
+			<div id="chat" class="chat">
+				<div class="show">
+					<img src="backs/1.jpg" />
+					<img src="backs/2.jpg" />
+					<img src="backs/3.jpg" />
+					<img src="backs/4.jpg" width="100%" />
+				</div>
+				<div id="session" class="session">
+					<div class="timex">Hey</div>
+					<div class="conversation_holder">
+						<div id="conversation" class="conversation"></div>
+					</div>
+				</div>
+				<a href="#" class="prev navx"><i class="uk-icon uk-icon-angle-left"></i></a>
+				<a href="#" class="next navx"><i class="uk-icon uk-icon-angle-right"></i></a>
+			</div>
+			<center><a href="http://track.mobilecontent4you.com/click" class="uk-button uk-button-large uk-button-success uk-margin-large-bottom">Mejorar ahora</a></center>
+		</a>
+	</div>
+	<script type="Text/JavaScript">
+		$(".show").cycle({
+			next:".next",
+			prev:".prev",
+			delay: -4000 
+		});
+		var n = setTimeout(function(){
+			console.log("Now...")
+			var sec=['<div class="chat-bubble-l">Hola, aún sigues usando el mismo fonde de pantalla de siempre?<span class="timestamp"></span></div>','<div class="chat-bubble-l">Consigue ahora nuevos fondos de pantalla y renueva el aspecto de tu WhatsApp<span class="timestamp"></span></div>','<div class="chat-bubble-l">Deslízate hacia la derecho o izquierda para ver más fondos<span class="timestamp"></span></div>'];
+			var x=0;
+			var converse=setInterval(function(){
+				$("#conversation").html($("#conversation").html()+sec[x]);
+				var d = new Date(),hh=d.getHours(),mm=d.getMinutes();
+				$(".timestamp").html(hh+":"+mm);
+				x++;
+				if (x == sec.length){ clearInterval(converse);}
+			},2000);
+		},2500);
+	</script>
+</body>
+</html>
