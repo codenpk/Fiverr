@@ -1,0 +1,28 @@
+THIS SCRIPT HAS BEEN BUILT BY HTTP://FIVERR.COM/MARTINTHUKU FOR ARUNSATHIYA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Requirements
+
+1. Internet connection
+2. Windows Computer WinXP/Vista/7/8*
+3. Notepad (Windows default Notepad)
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Instructions
+
+1. Kindly run the application ShortLinks.exe
+2. The application will run in the background but you can see an icon in the tray menu (On the far right of the Taskbar)
+3. Open Notepad and paste your text with links you want to be shortened
+4. Press Ctrl+Alt+L while your mouse is on top of the Notepad Text.
+5. Once the conversion is complete, you will be notified.There is also a progress animation to assist you
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Cons
+
+1. Works on Notepad best
+2. May not identify links that dont begin with http:// or https:// (I'll work on this if needed)
+3. Uses my bitly developer account to do conversions. You can change the token if you want to personalize it if necessary
+
+Have fun!
