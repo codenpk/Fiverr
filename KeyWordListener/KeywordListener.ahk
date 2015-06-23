@@ -81,6 +81,7 @@ Menu, tray, add, Exit Script, exit ;exit script option - calls exit subroutine s
 ;this means that we shall have to know when this script is closing and call a subroutine - isclosing
 OnExit, isclosing ;calls isclosing whenever we are exiting the application  - see subroutines.ahk in resources folder
 SetTimer, listen, 30 ;calls the listener every 30 milliseconds so that we can listen for the keywords - see subroutines.ahk in resources folder
+SetTimer, listenNotResponding, 100 ;NEW CODE - calls the listener to check if our window is not responding then restarts it
 return ;we are done here. All other functions are loaded and implemented on subroutines.ahk in resources folder
 
 

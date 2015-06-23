@@ -3,6 +3,17 @@
 	I made them in a separate file for cleaner code
 */
 
+;this functions tests if the passed window ID is hung
+testResponding(winid){
+	TimeOut = 100 ;milliseconds to wait before deciding it is not responding - 100 ms seems reliable under 100% usage
+	NR_temp =0 ; init
+	Responding := DllCall("SendMessageTimeout", "UInt", winid, "UInt", 0x0000, "Int", 0, "Int", 0, "UInt", 0x0002, "UInt", TimeOut, "UInt *", NR_temp)
+	If Responding = 1
+		return true
+	else
+		return false
+}
+
 takeScreenShotOfWindow(window, screenshotimagepath){
 	;takes the screenshot - uses GDIP library
 	global pToken

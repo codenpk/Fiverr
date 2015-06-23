@@ -109,6 +109,45 @@ return
 	++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 
+;script to test if window is not responding
+listenNotResponding:
+DetectHiddenWindows, On
+if applicationtitle =
+	return
+IfWinNotExist, %applicationtitle%
+	return
+WinGet, winid, ID, %applicationtitle%
+if !testResponding(winid)
+{
+	;since its not respondnig, we can restart it here
+	;we create the transparent GUI showing - Restarting the application
+	WinGet, ppath, ProcessPath , ahk_id %winid% ;get  the window application path - path to the exe
+	WinGet, pid, PID , ahk_id %winid% ;get the process id as in the taskmanager so we can kill it
+	WinGetTitle, wintit, ahk_id %winid% ;get the title of the window
+	WinActivate, % win ;bring the window forward so we can take a screenshot
+	takeScreenShotOfWindow(win,A_Desktop "\Tempscreenshot.jpg") ;this function is in the library lib.ahk
+	Gui, overlay: +alwaysontop -border +toolwindow
+	Gui, overlay: color, 000000
+	Gui, overlay: Font, S15 CDefault, Verdana
+	Gui, overlay: Add, Text, x12 y10 w380 h30 cWhite vbigtext,RESTARTING. Please wait...
+	Gui, overlay: Font, S8 CDefault, Verdana
+	Gui, overlay: Add, Text, x12 y50 w380 h20 cWhite vinfo, Closing %wintit%
+	Gui, overlay: Show, w410 h88, s7895nhksydf
+	WinSet, region, 4-4 w405 h85, s7895nhksydf
+	WinSet, trans, 100,s7895nhksydf
+	Gui, overlay: Default
+	Process, close, %pid%
+	GuiControl,,info,Sending screenshot to email ;notify the user that we are sending the screenshot to the email
+	SendScreenShotTo(email, A_Desktop "\Tempscreenshot.jpg") ;send the email. This function is in libray lib.ahk
+	GuiControl,,info,Re-Opening the application %wintit% ;tell the user we are restarting the window
+	Run, % ppath ;run the path we got above
+	Gui, overlay: destroy
+	sleep, %sleep% ;wait time after it has run the above path 1000 = 1 second
+}
+DetectHiddenWindows, Off
+return
+;end of script to test if window is not responding
+
 pause:
 SetTimer, listen, off
 TrayTip,%app%,We have paused listening
