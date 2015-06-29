@@ -1,4 +1,0 @@
-Click 200, 228 ;Click Order Field
-send, colon crews{enter 3}
-sleep, 700
-send, {tab 13}{end}{space}

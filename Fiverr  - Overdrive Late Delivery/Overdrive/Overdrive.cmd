@@ -1,1 +1,0 @@
-START "" "%__CD__%app\AHK_U.exe" "%__CD__%app\overdrive_app_master.au3"

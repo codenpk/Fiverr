@@ -1,8 +1,0 @@
-; Put you dot-phrase here - or whatever you want to type and not execute.  Replace ".kcrews" with your dot-phrase
-
-;Send, .kcrews
-
-Click 200, 228 ;Click Order Field
-;Sleep, 500
-Send, lab13042{enter 2}
-Sleep, 100

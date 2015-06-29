@@ -1,7 +1,0 @@
-Click, 175, 35 ; In Basket
-Sleep, 500
-Click 20, 118 ; New Message
-Sleep, 200
-Send, p345095{ENTER}{F3}
-Sleep, 200
-Click 477, 486 ; Notes area
