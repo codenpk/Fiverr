@@ -72,15 +72,23 @@ Gui, Add, Button, x32 y380 w80 h30 gshowHiddenFields1 vshowHiddenFields1, Show H
 Gui, Add, Edit, x122 y380 w210 h110 vDrop1 -Wrap ReadOnly WantTab,
 
 Gui, Tab, Add Hard Link
-Gui, Add, GroupBox, x22 y120 w320 h130 , Add Hard Web Link
+Gui, Add, GroupBox, x22 y120 w320 h210 , Add Hard Web Link
 Gui, Add, Text, x32 y150 w90 h20 , Display Name
 Gui, Add, Edit, x132 y150 w200 h20 vlinkDisplayName,
 Gui, Add, Text, x32 y180 w90 h20 , URL (Web Link)
 Gui, Add, Edit, x132 y180 w200 h20 vwebLink,
-Gui, Add, Text, x32 y210 w90 h20 , Font Size
-Gui, Add, Edit, x132 y210 w80 h20 vhfontSize,
-Gui, Add, Button, x22 y260 w170 h30 gcreateHardLink vcreateHardLink, Create Hard Link
-Gui, Add, Button, x22 y300 w170 h30 gcreateHardLink2 vcreateHardLink2, Create Hard Link (New Tab) ;TODO
+Gui, Add, Text, x32 y210 w90 h20 , Button Image URL
+Gui, Add, Edit, x132 y210 w200 h20 vimageLink,
+Gui, Add, Text, x32 y240 w90 h20 , Button Width
+Gui, Add, Edit, x132 y240 w80 h20 vbwidth,
+Gui, Add, Text, x32 y270 w90 h20 , Button Height
+Gui, Add, Edit, x132 y270 w80 h20 vbheight,
+Gui, Add, Text, x32 y300 w90 h20 , Font Size
+Gui, Add, Edit, x132 y300 w80 h20 vhfontSize,
+Gui, Add, Button, x22 y340 w170 h30 gcreateHardLink vcreateHardLink, Create Hard Link
+Gui, Add, Button, x+5 y340 w150 h30 gcreateButtonLink vcreateButtonLink, Text Button Link
+Gui, Add, Button, x22 y380 w170 h30 gcreateHardLink2 vcreateHardLink2, Create Hard Link (New Tab)
+Gui, Add, Button, x+5 y380 w150 h30 gcreateImageLink vcreateImageLink, Image Link
 
 Gui, Tab, Add Other Links (SQL)
 Gui, Add, GroupBox, x22 y120 w320 h200 , Create HTML Web Link From SQL
@@ -90,15 +98,17 @@ Gui, Add, Text, x32 y170 w80 h20 , Font Size
 Gui, Add, Edit, x122 y170 w80 h20 vfontSize,
 Gui, Add, Text, x32 y200 w80 h20 , SQL Name
 Gui, Add, Edit, x122 y200 w210 h20 vSQLName,
-Gui, Add, Text, x32 y230 w80 h40 , Fields To Pass (Separate with commas)
-Gui, Add, Edit, x122 y230 w210 h40 vfieldsToPass,
+Gui, Add, Text, x32 y230 w80 h40 , Fields To Pass
+Gui, Add, Edit, x122 y230 w145 h40 vfieldsToPass ReadOnly,
+Gui, Add, Button, x+3 y230 w70 h25 gselectFields1,Select Fields ;++++++++++++++++++++++++++++++++++++++++++++++++++
 Gui, Add, Button, x32 y280 w150 h30 gaddWebLink vaddWebLink,Custom URL
 Gui, Add, Button, x+5 y280 w150 h30 gaddWebLink2 vaddWebLink2,Custom HTML
 Gui, Add, GroupBox, x22 y330 w320 h140 , Add SQL updates to element
 Gui, Add, Text, x32 y350 w80 h20 , SQL Name
 Gui, Add, Edit, x122 y350 w210 h20 vOnLoadSQLname,
-Gui, Add, Text, x32 y380 w80 h40 , Fields To Pass (Separate with commas)
-Gui, Add, Edit, x122 y380 w210 h40 vOnLoadfieldstopass,
+Gui, Add, Text, x32 y380 w80 h40 , Fields To Pass
+Gui, Add, Edit, x122 y380 w145 h40 vOnLoadfieldstopass ReadOnly,
+Gui, Add, Button, x+3 y380 w70 h25 gselectFields2,Select Fields ;++++++++++++++++++++++++++++++++++++++++++++++++++
 Gui, Add, Button, x32 y430 w150 h30 gaddSQLOnload vaddSQLOnload, Add SQL OnLoad
 
 Gui, Tab, Display
@@ -107,8 +117,9 @@ Gui, Add, Text, x32 y140 w90 h20 , List Name
 Gui, Add, Edit, x132 y140 w200 h20 vdispListName,
 Gui, Add, Text, x32 y170 w90 h20 , SQL Name
 Gui, Add, Edit, x132 y170 w200 h20 vdispSQLName,
-Gui, Add, Text, x32 y200 w90 h40 , Fields To Pass (Separate with commas)
-Gui, Add, Edit, x132 y200 w200 h40 vdispFieldsToPass,
+Gui, Add, Text, x32 y200 w90 h40 , Fields To Pass
+Gui, Add, Edit, x132 y200 w135 h40 vdispFieldsToPass ReadOnly,
+Gui, Add, Button, x+3 y200 w70 h25 gselectFields3,Select Fields ;++++++++++++++++++++++++++++++++++++++++++++++++++
 Gui, Add, Button, x32 y250 w150 h30 gaddDispMultipleRows vaddDispMultipleRows, Add (Display Multiple Rows) ;TODO
 Gui, Add, Button, x32 y290 w150 h30 gaddDispTable vaddDispTable, Add (Display Table) ;TODO
 Gui, Add, GroupBox, x22 y340 w320 h100 ,Add logo, etc to top right  ( example : <h1>Custom Logo</h1> )
@@ -119,6 +130,69 @@ Gui, Show, w365 h525, %app%
 return
 
 ;end of main UI
+
+createImageLink:
+Gui, submit, nohide
+gosub, disableControls
+addHTML("<a href='" webLink "'><img src='" imageLink "' border='0' alt='" linkDisplayName "'   width='" bwidth "' height='" bheight "' /></a>")
+gosub, enableControls
+return
+
+createButtonLink:
+Gui, submit, nohide
+gosub, disableControls
+addHTML("<a href='" webLink "' style='font-size: " hfontSize "pt;' target='_parent'><button>" linkDisplayName "</button></a>")
+gosub, enableControls
+return
+
+selectFields1:
+_sctrl=fieldsToPass
+goto, selectFieldsxx
+
+selectFields2:
+_sctrl=OnLoadfieldstopass
+goto, selectFieldsxx
+
+selectFields3:
+_sctrl=dispFieldsToPass
+goto, selectFieldsxx
+
+selectFieldsxx:
+Gui, 2: Destroy
+Gui, 2: +toolwindow +owner1
+Gui, 2: Add, ListView, x2 y0 w220 h180 +Grid -Multi AltSubmit Checked,Field Name
+Gui, 2: Add, Button, x2 y180 w100 h30 gxxAddSelected, Add Selected
+Gui, 2: Default
+xxlist := getFields()
+loop, parse, xxlist, `n
+	LV_Add("-Check",A_LoopField)
+Gui, 2: Show, w227 h215,Select Fields
+return
+
+2GuiClose:
+2GuiEscape:
+Gui, 2: destroy
+return
+
+xxAddSelected:
+Gui, 2: Default
+xxl =
+xxrow := 0
+Loop
+{
+	xxrow := LV_GetNext(xxrow,"Checked")
+	if not xxrow
+		break
+	LV_GetText(xxitem,xxrow,1)
+	xxitem = %xxitem%
+	if xxitem !=
+		xxl .= (xxl = "" ? xxitem : "," xxitem)
+}
+Gui, 1: default
+GuiControl,,%_sctrl%,%xxl%
+Gui, 2: destroy
+return
+
 addWebLink2:
 Gui, submit, nohide
 fieldName = %fieldName%
@@ -389,13 +463,13 @@ subClose:
 goto, Exit
 
 disableControls:
-controls =beginHide|endHide|endHideSButton|createHardLink|addWebLink|addSQLOnload|showHiddenFields|endRepeating|startRepeating|showHiddenFields1|addDispMultipleRows|addDispTable|createHardLink2|addCustomLogo
+controls =beginHide|endHide|endHideSButton|createHardLink|addWebLink|addSQLOnload|showHiddenFields|endRepeating|startRepeating|showHiddenFields1|addDispMultipleRows|addDispTable|createHardLink2|addCustomLogo|createImageLink|createButtonLink
 loop, parse, controls, `|
 	GuiControl,Disable, % a_loopfield
 return
 
 enableControls:
-controls =beginHide|endHide|endHideSButton|createHardLink|addWebLink|addSQLOnload|showHiddenFields|endRepeating|startRepeating|showHiddenFields1|addDispMultipleRows|addDispTable|createHardLink2|addCustomLogo
+controls =beginHide|endHide|endHideSButton|createHardLink|addWebLink|addSQLOnload|showHiddenFields|endRepeating|startRepeating|showHiddenFields1|addDispMultipleRows|addDispTable|createHardLink2|addCustomLogo|createImageLink|createButtonLink
 loop, parse, controls, `|
 	GuiControl,Enable, % a_loopfield
 return
