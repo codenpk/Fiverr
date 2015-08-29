@@ -24,38 +24,16 @@ query = %query%
 if query=
 	return
 URL := "https://duckduckgo.com/?q=" query
-whr := ComObjCreate("WinHttp.WinHttpRequest.5.1")
-whr.Open("GET", URL, true)
-whr.Send()
-whr.WaitForResponse()
-source := uriDecode(whr.ResponseText)
-RegExMatch(source,"uddg=[a-zA-Z0-9\(\)=_\?\.:\/\/-]*",match)
-StringReplace,match,match,uddg=,,all
-match = %match%
-if match !=
-{
-	whr.Open("GET", match, true)
-	whr.Send()
-	whr.WaitForResponse()
-	source := uriDecode(whr.ResponseText)
-	RegExMatch(source,"<title>.+</title>",title)
-	StringReplace,title,title,<title>,,all
-	StringReplace,title,title,</title>,,all
-	Clipboard := match "[" title "]"
-	TrayTip,duckduckgo - quick search,%match% [%title%] copied to clipboard
-}
-else {
-	TrayTip,duckduckgo - quick search,No immediate link found. Please use "\" before query to get the first link
-}
+ie := ComObjCreate("InternetExplorer.Application")
+ie.Visible := true
+ie.Silent := true
+ie.Toolbar := false
+ie.Navigate(URL)
+while ie.ReadyState != 4
+	sleep, 100
+Sleep, 2000
+MsgBox % ie.LocationURL "`n" ie.document.title
 return
-
-uriDecode(str) {
-	Loop
-		If RegExMatch(str, "i)(?<=%)[\da-f]{1,2}", hex)
-			StringReplace, str, str, `%%hex%, % Chr("0x" . hex), All
-		Else Break
-	Return, str
-}
 
 #IfWinActive,Search DuckDuckGo
 ^BackSpace:: ;control backspace hack
